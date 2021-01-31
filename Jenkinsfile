@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'python:3.9.1-buster' 
+            image 'python:3.9.1-buster'
+            args '-u root'		 
             args '-p 5005:4999' 
         }
     }
