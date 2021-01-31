@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Copy myserver.py') { 
             steps {
-		sh 'mkdir /app'
-                sh 'cp myserver.py /app/myserver.py'
+		sh 'cp myserver.py /myserver.py'
              }
         }
         stage('Install dependencies') { 
@@ -20,7 +19,7 @@ pipeline {
         }
         stage('Run') { 
             steps {
-                sh 'python3 /app/myserver.py'
+                sh 'python3 /myserver.py'
             }
         }
     }
