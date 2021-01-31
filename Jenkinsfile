@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Copy myserver.py') { 
             steps {
+		sh 'mkdir /app'
                 sh 'cp myserver.py /app/myserver.py'
              }
         }
