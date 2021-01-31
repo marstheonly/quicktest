@@ -10,6 +10,5 @@ pipeline {
                 sh 'docker run -it -p 5005:4999 mycustomflaskserver'
                 }
         }
-    }
-  }  
+    }  
 }     
