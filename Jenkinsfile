@@ -1,26 +1,14 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9.1-buster'
-            args '-u root'		 
-            args '-p 5005:4999' 
-        }
-    }
     stages {
-        stage('Copy myserver.py') { 
+        stage('Build image') {
             steps {
-		sh 'cp myserver.py /myserver.py'
-             }
+                sh 'docker build -t mycustomflaskserver .'
+                }
         }
-        stage('Install dependencies') { 
+        stage('Run') {
             steps {
-                sh 'pip --no-cache-dir install requests flask-restful'
-            }
-        }
-        stage('Run') { 
-            steps {
-                sh 'python3 /myserver.py'
-            }
+                sh 'docker run -it -p 5005:4999 mycustomflaskserver'
+                }
         }
     }
-}
+}     
