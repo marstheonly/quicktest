@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Run') {
             steps {
-                sh 'docker run -it -p 5005:4999 mycustomflaskserver'
+                sh 'docker run -d -p 5005:4999 mycustomflaskserver'
                 }
         }
     }  
